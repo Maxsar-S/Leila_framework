@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+Список читателей
+{% endblock %}
+{% block style %}
+	{% include "inc-style.html" %}
+{% endblock %}
+{% block menu %}
+	{% include "inc-menu.html" %}
+{% endblock %}
+{% block body %}
+	<div>
+		<li>
+			<a href="/create-reader/">Создать читателя</a>
+		</li>
+		<li>
+			<a href="/add-reader/">Добавить читателя в статью</a>
+		</li>
+	</div>
+    <h1>Список читателей</h1>
+    <div>
+
+        {% for item in objects_list %}
+        <li>
+            {{item.name}}
+            {% for article in item.articles %}
+                {{article.name}}
+            {% endfor %}
+        </li>
+        {% endfor %}
+    </div>
+{% endblock %}
